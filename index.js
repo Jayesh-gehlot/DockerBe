@@ -4,7 +4,7 @@ const app = express()
 
 const PORT = 5000;
 app.get("/", (req, res) => {
-    res.send("Hello running perfectly  docker image")
+    res.send("Hello we are running perfectly  docker image")
 })
 
 app.listen(PORT,()=>{
