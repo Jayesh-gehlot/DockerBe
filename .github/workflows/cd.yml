@@ -26,3 +26,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: jaydev5546/node:${{ github.sha }}
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 16.171.153.101
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
+          port: 22
+          script: |
+            echo "Starting deployment"
+            docker stop node-app
+            docker run -d --name node-app -p 5000:5000 jaydev5546/node:${{ github.sha }
